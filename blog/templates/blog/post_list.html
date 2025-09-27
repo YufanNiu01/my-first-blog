@@ -8,17 +8,15 @@
             <h1><a href="/">Yufan's Django Girls blog</a></h1>
         </header>
 
+        <h3>Selected posts</h3>
+        {% for post in posts %}
         <article>
-            <time>published: 27.09.2025, 12:14</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Some random words here.</p>
+            <h2><a href="">{{post.title}}</a></h2>
+            <time>created: {{post.created_date}}</time><br/>
+            <time>published: {{post.published_date}}</time><br/>
+            <p>{{post.text|linebreaksbr}}</p>
         </article>
+        {% endfor %}
 
-        <article>
-            <time>published: 27.09.2025, 12:14</time>
-            <!# make it clickable>
-            <h2><a href="">My second post</a></h2> 
-            <p>Some more random words here.</p>
-        </article>
     </body>
 </html>
