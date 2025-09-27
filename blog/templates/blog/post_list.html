@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Yufan's Django Girls blog</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Yufan's Django Girls blog</a></h1>
-        </header>
-
-        <h3>Selected posts</h3>
-        {% for post in posts %}
-        <article>
-            <h2><a href="">{{post.title}}</a></h2>
-            <time>created: {{post.created_date}}</time><br/>
-            <time>published: {{post.published_date}}</time><br/>
-            <p>{{post.text|linebreaksbr}}</p>
-        </article>
-        {% endfor %}
-
-    </body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in posts %}
+    <article class="post">
+        <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+        <time>created: {{post.created_date}}</time><br/>
+        <time>published: {{post.published_date}}</time><br/>
+        <p>{{post.text|linebreaksbr}}</p>
+    </article>
+    {% endfor %}
+{%endblock%}
